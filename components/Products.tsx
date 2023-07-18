@@ -20,7 +20,7 @@ export default async function Products(props: Props) {
           >
             <h1 className="font-bold">{product.title}</h1>
             <img src={product.image} />
-            <div>${product.prices[product.prices.length - 1].price}</div>
+            <div>${product.prices[product.prices.length - 1].price.toLocaleString()}</div>
           </Link>
         ))}
       </div>

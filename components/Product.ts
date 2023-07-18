@@ -64,7 +64,7 @@ export const getProducts = async (url: string) => {
         itemExistente.prices.push({
           date: date,
           stock: stock,
-          price: parseFloat(price),
+          price: parseFloat(price.replace(/\./g, '')),
           dolar_oficial: parseFloat(dolar_oficial),
           oficial_price: oficial_price,
           dolar_blue: parseFloat(dolar_blue),
@@ -80,7 +80,7 @@ export const getProducts = async (url: string) => {
             {
               date: date,
               stock: stock,
-              price: parseFloat(price),
+              price: parseFloat(price.replace(/\./g, '')),
               dolar_oficial: parseFloat(dolar_oficial),
               oficial_price: oficial_price,
               dolar_blue: parseFloat(dolar_blue),
