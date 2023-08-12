@@ -3,20 +3,20 @@ import { GroupedProduct, getProducts } from "./Product"
 import Image from "next/image"
 
 type Props = {
-  url: string
+  products: GroupedProduct[]
   store: string
 }
 
 export default async function Products(props: Props) {
-  const products = await getProducts(props.url)
+
   return (
     <section className="grid justify-center">
       <h1 className="text-black text-xl">
         {props.store.toUpperCase()} Products
       </h1>
       <div className="grid self-center gap-4 grid-cols-1fr grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {products
-          ? products.map((product: GroupedProduct) => (
+        {props.products
+          ? props.products.map((product: GroupedProduct) => (
               <Link
                 href={`/${props.store}/${product.id}`}
                 className="flex flex-col justify-between rounded-md w-64 md:w-48 h-80 pb-4 shadow-md bg-slate-50 text-black box-shadow hover:shadow-xl hover:scale-105 transition-transform duration-300"

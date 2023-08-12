@@ -3,7 +3,7 @@ export const categories = [
   { value: "Notebooks", mexx: "notebooks", logg: "Notebooks" },
   { value: "Motherboards", mexx: "motherboards", logg: "Motherboards" },
   { value: "Procesadores", mexx: "procesadores", logg: "Procesadores" },
-  { value: "Memorias ram", mexx: "memorias-ram", logg: "memoriasRAM" },
+  { value: "Memorias ram", mexx: "memorias-ram", logg: "MemoriaRAM" },
   { value: "Almacenamiento", mexx: "almacenamiento", logg: "Almacenamiento" },
   { value: "Placas de video", mexx: "placas-de-video", logg: "Placasdevideo" },
   {

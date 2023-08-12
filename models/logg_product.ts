@@ -15,6 +15,6 @@ const LoggProductSchema: Schema = new Schema({
     blue_price: mongoose.Schema.Types.Decimal128
 }, { collection: 'logg_hardstore_products' })
 
-const Logg_product = mongoose.model("Logg_product", LoggProductSchema)
+const Logg_product = mongoose.models.Logg_product || mongoose.model("Logg_product", LoggProductSchema)
 
 export default Logg_product

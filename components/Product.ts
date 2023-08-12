@@ -33,9 +33,7 @@ export type GroupedProduct = {
 
 export const getProducts = async (url: string) => {
   try {
-    const res = await fetch(url, {
-      next: { revalidate: 60 * 60 * 24 },
-    })
+    const res = await fetch(url)
 
     if (!res.ok) throw new Error(res.statusText)
 
@@ -64,7 +62,7 @@ export const getProducts = async (url: string) => {
         itemExistente.prices.push({
           date: date,
           stock: stock,
-          price: parseFloat(price.replace(/\./g, '')),
+          price: parseFloat(price.replace(/\./g, "")),
           dolar_oficial: parseFloat(dolar_oficial),
           oficial_price: oficial_price,
           dolar_blue: parseFloat(dolar_blue),
@@ -80,7 +78,7 @@ export const getProducts = async (url: string) => {
             {
               date: date,
               stock: stock,
-              price: parseFloat(price.replace(/\./g, '')),
+              price: parseFloat(price.replace(/\./g, "")),
               dolar_oficial: parseFloat(dolar_oficial),
               oficial_price: oficial_price,
               dolar_blue: parseFloat(dolar_blue),

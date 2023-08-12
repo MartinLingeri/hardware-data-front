@@ -15,6 +15,6 @@ const MexxProductSchema: Schema = new Schema({
     blue_price: mongoose.Schema.Types.Decimal128
 }, { collection: 'mexx_products' })
 
-const Mexx_product = mongoose.model("Mexx_product", MexxProductSchema)
+const Mexx_product = mongoose.models.Mexx_product || mongoose.model("Mexx_product", MexxProductSchema)
 
 export default Mexx_product
