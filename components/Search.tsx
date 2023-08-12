@@ -5,18 +5,16 @@ import { useState, useEffect, useTransition, useCallback } from "react"
 
 export default function Search() {
   const [search, setSearch] = useState("")
-  const [searchProduct, setSearchProduct] = useState<string>("")
-  const [debouncedValue, setDebouncedValue] = useState<string>("")
   const [mounted, setMounted] = useState<boolean>(false)
   const router = useRouter()
   const pathname = usePathname()
   const [isPending, startTransition] = useTransition()
 
   const handleSearchParams = useCallback(
-    (debouncedValue: string) => {
+    (searchQuery: string) => {
       let params = new URLSearchParams(window.location.search)
-      if (debouncedValue.length > 0) {
-        params.set("search", debouncedValue)
+      if (searchQuery.length > 0) {
+        params.set("search", searchQuery)
       } else {
         params.delete("search")
       }
@@ -34,14 +32,14 @@ export default function Search() {
   }, [])
 
   useEffect(() => {
-    if (debouncedValue.length > 0 && !mounted) {
+    if (search.length > 0 && !mounted) {
       setMounted(true)
     }
-  }, [debouncedValue, mounted])
+  }, [search, mounted])
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    handleSearchParams(debouncedValue)
+    handleSearchParams(search)
   }
 
   return (
@@ -73,12 +71,11 @@ export default function Search() {
           id="default-search"
           className="block w-full p-4 pl-10 text-sm text-gray-900 rounded-lg bg-gray-50 shadow-md focus:shadow-xl focus:border-black"
           placeholder="Buscar..."
-          required
         />
         {isPending ? (
           <button
             type="button"
-            className="absolute right-2.5 bottom-2.5 inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-blue-700 hover:bg-blue-500 transition ease-in-out duration-150 cursor-not-allowed"
+            className="absolute right-2.5 bottom-2.5 flex items-center justify-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-blue-700 hover:bg-blue-500 transition ease-in-out duration-150 cursor-not-allowed"
             disabled
           >
             <svg
@@ -93,7 +90,7 @@ export default function Search() {
                 cy="12"
                 r="10"
                 stroke="currentColor"
-                stroke-width="4"
+                strokeWidth="4"
               ></circle>
               <path
                 className="opacity-75"

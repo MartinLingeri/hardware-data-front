@@ -4,21 +4,39 @@ import Categories from "@/components/Categories"
 import { categories } from "@/components/Category"
 import { GroupedProduct, getProducts } from "@/components/Product"
 
-
 export default async function Home({
   searchParams,
 }: {
   searchParams: { search?: string }
 }) {
-
   let productsMexx: GroupedProduct[] = []
 
   //let productsLogg: GroupedProduct[] = []
 
   const search = searchParams.search ?? ""
 
-  const initialProductsMexx = await getProducts("http://localhost:3000/api/mexx")
+  const initialProductsMexx = await getProducts(
+    "http://localhost:3000/api/mexx"
+  )
 
+  interface GroupedProductMap {
+    [key: string]: GroupedProduct[]
+  }
+
+  const initialProductsMexxReduced: GroupedProduct[] = (
+    Object.values(
+      (initialProductsMexx || []).reduce(
+        (acc: GroupedProductMap, product: GroupedProduct) => {
+          if (!acc[product.category] || acc[product.category].length < 10) {
+            acc[product.category] = [...(acc[product.category] || []), product]
+          }
+          return acc
+        },
+        {}
+      )
+    ) as GroupedProduct[][]
+  ).flat()
+  console.log(search)
   //const initialProductsLogg = await getProducts("http://localhost:3000/api/logg")
 
   const filteredProductsMexx = initialProductsMexx!.filter((product) =>
@@ -40,17 +58,15 @@ export default async function Home({
       productsMexx = []
       //productsLogg = []
     }
-  }
-  else {
-    productsMexx = initialProductsMexx ?? []
+  } else {
+    productsMexx = initialProductsMexxReduced ?? []
     //productsLogg = initialProductsLogg ?? []
   }
 
-
   return (
-    <main className="bg-gray-100 py-8">
+    <main className="bg-gray-100 py-8 min-h-screen">
       <div className="mx-auto max-w-4xl">
-        {/* <Search /> */}
+        <Search />
         <Categories />
         <Products products={productsMexx} store="mexx" />
         {/* <Products products={productsLogg} store="logg" /> */}
