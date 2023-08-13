@@ -33,7 +33,7 @@ export type GroupedProduct = {
 
 export const getProducts = async (url: string) => {
   try {
-    const res = await fetch(url, { cache: 'no-store' })
+    const res = await fetch(url, { cache: "no-store" })
 
     if (!res.ok) throw new Error(res.statusText)
 
@@ -92,6 +92,57 @@ export const getProducts = async (url: string) => {
     }, [])
 
     return listaTransformada
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getProduct = async (url: string) => {
+  try {
+    const res = await fetch(url, { cache: "no-store" })
+
+    if (!res.ok) throw new Error(res.statusText)
+
+    const { products: listaOriginal }: { products: Product[] } =
+      await res.json()
+
+    const objetoTransformado: GroupedProduct =
+      listaOriginal.reduce<GroupedProduct>(
+        (acumulador, elemento) => {
+          const {
+            id,
+            image,
+            title,
+            category,
+            price,
+            stock,
+            date,
+            dolar_oficial,
+            oficial_price,
+            dolar_blue,
+            blue_price,
+          } = elemento
+
+          acumulador.id = parseInt(id)
+          acumulador.title = title
+          acumulador.image = image
+          acumulador.category = category
+          acumulador.prices.push({
+            date: date,
+            stock: stock,
+            price: parseFloat(price.replace(/\./g, "")),
+            dolar_oficial: parseFloat(dolar_oficial),
+            oficial_price: oficial_price,
+            dolar_blue: parseFloat(dolar_blue),
+            blue_price: blue_price,
+          })
+
+          return acumulador
+        },
+        { id: 0, title: "", image: "", category: "", prices: [] }
+      )
+
+    return objetoTransformado
   } catch (error) {
     console.log(error)
   }

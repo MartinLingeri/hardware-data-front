@@ -1,7 +1,6 @@
 import Products from "@/components/Products"
 import Search from "@/components/Search"
 import Categories from "@/components/Categories"
-import { categories } from "@/components/Category"
 import { GroupedProduct, getProducts } from "@/components/Product"
 
 export default async function Home({
@@ -36,7 +35,6 @@ export default async function Home({
       )
     ) as GroupedProduct[][]
   ).flat()
-  console.log(search)
   //const initialProductsLogg = await getProducts("http://localhost:3000/api/logg")
 
   const filteredProductsMexx = initialProductsMexx!.filter((product) =>

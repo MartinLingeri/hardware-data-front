@@ -26,10 +26,10 @@ export default async function Products(props: Props) {
                   //alt={product.title}
                   //width={192}
                   //height={192}
-                  className="w-full max-h-48 object-cover rounded-t-md"
+                  className="w-full h-48 object-cover rounded-t-md"
                   src={product.image}
                 />
-                <h1 className="font-medium px-4 max-h-30 line-clamp-4 sm:line-clamp-3">
+                <h1 className="font-medium text-sm px-4 max-h-30">
                   {product.title}
                 </h1>
                 <div className="font-bold px-4">
