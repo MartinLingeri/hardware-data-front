@@ -3,20 +3,64 @@ import { GroupedProduct, getProducts } from "./Product"
 import Image from "next/image"
 
 type Props = {
-  products: GroupedProduct[]
+  search: string | undefined
   store: string
 }
 
 export default async function Products(props: Props) {
+  let products: GroupedProduct[] = []
+
+  const search = props.search ?? ""
+
+  const initialProducts = await getProducts(
+    `http://localhost:3000/api/${props.store}`
+  )
+
+  interface GroupedProductMap {
+    [key: string]: GroupedProduct[]
+  }
+
+  const initialProductsReduced: GroupedProduct[] = (
+    Object.values(
+      (initialProducts || []).reduce(
+        (acc: GroupedProductMap, product: GroupedProduct) => {
+          if (!acc[product.category] || acc[product.category].length < 10) {
+            acc[product.category] = [...(acc[product.category] || []), product]
+          }
+          return acc
+        },
+        {}
+      )
+    ) as GroupedProduct[][]
+  ).flat()
+  //const initialProductsLogg = await getProducts("http://localhost:3000/api/logg")
+
+  const filteredProductsMexx = initialProducts!.filter((product) =>
+    product.title.toLowerCase().includes(search.toLowerCase())
+  )
+
+  // const filteredProductsLogg = initialProductsLogg!.filter((product) =>
+  //   product.title.toLowerCase().includes(search.toLowerCase())
+  // )
+
+  if (search.length > 0) {
+    if (filteredProductsMexx) {
+      products = filteredProductsMexx
+    } else {
+      products = []
+    }
+  } else {
+    products = initialProductsReduced ?? []
+  }
 
   return (
     <section className="grid justify-center">
       <h1 className="text-black text-xl">
-        {props.store.toUpperCase()} Products
+        {props.store.toUpperCase()} Productos
       </h1>
       <div className="grid self-center gap-4 grid-cols-1fr grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {props.products
-          ? props.products.map((product: GroupedProduct) => (
+        {products
+          ? products.map((product: GroupedProduct) => (
               <Link
                 href={`/${props.store}/${product.id}`}
                 className="flex flex-col justify-between rounded-md w-64 md:w-48 h-80 pb-4 shadow-md bg-slate-50 text-black box-shadow hover:shadow-xl hover:scale-105 transition-transform duration-300"

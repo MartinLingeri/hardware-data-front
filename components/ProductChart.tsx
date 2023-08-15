@@ -137,7 +137,7 @@ export default function ProductChart(props: Props) {
             tickLine={false}
             tickFormatter={(number) => `$${number.toLocaleString()}`}
           />
-          <Tooltip />
+          <Tooltip content={<CustomTooltipDolar />} />
           <Legend />
         </AreaChart>
       </ResponsiveContainer>
@@ -157,6 +157,29 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
       <div className="rounded-md shadow-md bg-slate-50 text-black box-shadow p-2">
         <h4>{format(parseISO(label!), "eeee, d MMM, yyyy", { locale: es })}</h4>
         <p>${payload![0].value.toLocaleString()} ARS</p>
+      </div>
+    )
+  }
+  return null
+}
+
+function CustomTooltipDolar({ active, payload, label }: CustomTooltipProps) {
+  if (active) {
+    return (
+      <div className="rounded-md shadow-md bg-slate-50 text-black box-shadow p-2">
+        <h4>{format(parseISO(label!), "eeee, d MMM, yyyy", { locale: es })}</h4>
+        <p className="text-[#3ADE81]">
+          Precio a dolar oficial: ${payload![0].value.toLocaleString()} ARS
+        </p>
+        <p className="text-[#33a]">
+          Precio a dolar blue: ${payload![1].value.toLocaleString()} ARS
+        </p>
+        <p className="text-[#91DE7A]">
+          Dolar Oficial: ${payload![2].value.toLocaleString()} ARS
+        </p>
+        <p className="text-[#33e]">
+          Dolar Blue: ${payload![3].value.toLocaleString()} ARS
+        </p>
       </div>
     )
   }
