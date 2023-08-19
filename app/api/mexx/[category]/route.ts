@@ -28,7 +28,7 @@ export async function GET(request: NextRequest, { params }: any) {
     },
     {
       $match: {
-        category: category.replace("-", " "),
+        category: category.replace(/\-/g, " "),
       },
     },
   ])

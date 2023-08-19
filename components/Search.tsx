@@ -43,7 +43,7 @@ export default function Search() {
   }
 
   return (
-    <form className="p-9" onSubmit={(e) => handleSubmit(e)}>
+    <form className="pb-9 px-9" onSubmit={(e) => handleSubmit(e)}>
       <div className="relative">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <svg
