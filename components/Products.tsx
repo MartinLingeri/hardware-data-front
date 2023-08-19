@@ -5,6 +5,7 @@ import Image from "next/image"
 type Props = {
   search: string | undefined
   store: string
+  url: string
 }
 
 export default async function Products(props: Props) {
@@ -13,7 +14,7 @@ export default async function Products(props: Props) {
   const search = props.search ?? ""
 
   const initialProducts = await getProducts(
-    `http://localhost:3000/api/${props.store}`
+    props.url
   )
 
   interface GroupedProductMap {
@@ -33,19 +34,14 @@ export default async function Products(props: Props) {
       )
     ) as GroupedProduct[][]
   ).flat()
-  //const initialProductsLogg = await getProducts("http://localhost:3000/api/logg")
 
-  const filteredProductsMexx = initialProducts!.filter((product) =>
+  const filteredProducts = initialProducts!.filter((product) =>
     product.title.toLowerCase().includes(search.toLowerCase())
   )
 
-  // const filteredProductsLogg = initialProductsLogg!.filter((product) =>
-  //   product.title.toLowerCase().includes(search.toLowerCase())
-  // )
-
   if (search.length > 0) {
-    if (filteredProductsMexx) {
-      products = filteredProductsMexx
+    if (filteredProducts) {
+      products = filteredProducts
     } else {
       products = []
     }

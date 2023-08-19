@@ -4,10 +4,10 @@ import Search from "@/components/Search"
 import Categories from "@/components/Categories"
 import LoadingProducts from "@/components/LoadingProducts"
 
-export default async function Home({
-  searchParams,
+export default function Category({
+  params,
 }: {
-  searchParams: { search?: string }
+  params: { category?: string; search?: string }
 }) {
   return (
     <main className="bg-gray-100 py-8 min-h-screen">
@@ -16,12 +16,14 @@ export default async function Home({
         <Categories />
         <Suspense fallback={<LoadingProducts />}>
           <Products
-            search={searchParams.search}
+            search={params.search}
             store="mexx"
-            url="http://localhost:3000/api/mexx"
+            url={`http://localhost:3000/api/mexx/${params.category}`}
           />
         </Suspense>
-        {/* <Products search={searchParams.search} store="logg" url="http://localhost:3000/api/logg" /> */}
+        {/* <Products search={params.search}
+            store="logg"
+            url={`http://localhost:3000/api/logg/${params.category}`} /> */}
       </div>
     </main>
   )

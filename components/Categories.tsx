@@ -1,6 +1,26 @@
+"use client"
+
+import { useRouter, usePathname } from "next/navigation"
+import { useEffect, useState } from "react"
 import { categories } from "./Category"
 
 export default function Categories() {
+  const router = useRouter()
+  const [pathname, setPathname] = useState(usePathname())
+  const [category, setCategory] = useState("")
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const categoryQuery = params.get("category") ?? ""
+    setCategory(categoryQuery)
+  }, [])
+
+  function handleChangeSelect(event: React.ChangeEvent<HTMLSelectElement>) {
+    const category = event.target.value
+    setCategory(category)
+    router.replace(`category/${category}`)
+  }
+
   return (
     <div className="mx-9 mb-9">
       <select

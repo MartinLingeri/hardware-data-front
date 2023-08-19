@@ -9,7 +9,15 @@ export default function LoadingProducts() {
         <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
         <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
         <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
-        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md visible md:hidden lg:visible xl:visible"></div>
+        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
+        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
+        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
+        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
+        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
+        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
+        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
+        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
+        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
       </div>
       <h1 className="text-black text-xl">Logg Productos</h1>
       <div
@@ -19,7 +27,15 @@ export default function LoadingProducts() {
         <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
         <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
         <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
-        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md visible md:hidden xl:visible"></div>
+        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
+        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
+        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
+        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
+        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
+        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
+        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
+        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
+        <div className="bg-gray-200 rounded-md w-64 md:w-48 h-80 pb-4 shadow-md"></div>
       </div>
     </section>
   )
