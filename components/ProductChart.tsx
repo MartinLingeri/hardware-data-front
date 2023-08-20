@@ -32,7 +32,7 @@ export default function ProductChart(props: Props) {
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart
           data={props.data}
-          margin={{ top: 10, bottom: 10, left: 30, right: 30 }}
+          margin={{ top: 10, bottom: 10, left: 40, right: 30 }}
         >
           <defs>
             <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
@@ -72,7 +72,7 @@ export default function ProductChart(props: Props) {
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart
           data={props.data}
-          margin={{ top: 10, bottom: 10, left: 30, right: 30 }}
+          margin={{ top: 10, bottom: 10, left: 40, right: 30 }}
         >
           <defs>
             <linearGradient id="color2" x1="0" y1="0" x2="0" y2="1">
