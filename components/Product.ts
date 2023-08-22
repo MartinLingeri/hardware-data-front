@@ -10,9 +10,13 @@ export type Product = {
   stock: string
   date: string
   dolar_oficial: string
-  oficial_price: number
+  oficial_price: {
+    ['$numberDecimal']: string;
+  }
   dolar_blue: string
-  blue_price: number
+  blue_price: {
+    ['$numberDecimal']: string;
+  }
 }
 
 export type GroupedProduct = {
@@ -25,9 +29,9 @@ export type GroupedProduct = {
     stock: string
     price: number
     dolar_oficial: number
-    oficial_price: number
+    oficial_price: any
     dolar_blue: number
-    blue_price: number
+    blue_price: any
   }[]
 }
 

@@ -36,8 +36,8 @@ export default async function ProductInfo(props: Props) {
     Precio_a_dolar_oficial: parseFloat(
       priceData.oficial_price["$numberDecimal"]
     ),
-    Dolar_oficial: parseFloat(priceData.dolar_oficial),
-    Dolar_blue: parseFloat(priceData.dolar_blue),
+    Dolar_oficial: parseFloat(priceData.dolar_oficial.toString()),
+    Dolar_blue: parseFloat(priceData.dolar_blue.toString()),
   }))
   return (
     <>
