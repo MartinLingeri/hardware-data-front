@@ -37,9 +37,7 @@ export type GroupedProduct = {
 
 export const getProducts = async (url: string) => {
   try {
-    const res = await fetch(url, {
-      next: { revalidate: 60 * 60 * 24 },
-    })
+    const res = await fetch(url, { cache: "no-store" })
 
     if (!res.ok) throw new Error(res.statusText)
 
