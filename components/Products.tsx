@@ -51,11 +51,15 @@ export default async function Products(props: Props) {
   }
 
   return (
-    <section className="grid justify-center">
-      <h1 className="text-black text-xl">
-        {props.store.toUpperCase()} Productos
-      </h1>
-      {products ? (
+    <section id={props.store} className="grid justify-center mt-9">
+      <div className="flex gap-2 items-center mb-2">
+        <h1 className="text-black inline-block min-w-fit text-xl">
+          {props.store.toUpperCase()} Productos
+        </h1>
+        <div className="bg-black w-full h-1 rounded-md">
+        </div>
+      </div>
+      {products.length ? (
         <div className="grid self-center gap-4 grid-cols-1fr grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {products.map((product: GroupedProduct) => (
             <Link
@@ -83,7 +87,7 @@ export default async function Products(props: Props) {
           ))}
         </div>
       ) : (
-        <h2>No se encontraron productos</h2>
+        <h2 className="text-black m-9">No se encontraron productos</h2>
       )}
     </section>
   )

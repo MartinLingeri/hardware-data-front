@@ -8,7 +8,7 @@ export async function GET(request: NextRequest, { params }: any) {
   const { category } = params
 
   const lastWeek = new Date()
-  lastWeek.setDate(lastWeek.getDate() - 7)
+  lastWeek.setDate(lastWeek.getDate() - 2)
 
   const products = await Mexx_product.aggregate([
     {

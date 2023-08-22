@@ -3,6 +3,7 @@ import { Suspense } from "react"
 import { categories } from "@/components/Category"
 import LoadingProducts from "@/components/LoadingProducts"
 import Layout from "@/components/Layout"
+import ScrollButtons from "@/components/ScrollButtons"
 
 export default function Category({
   params,
@@ -27,11 +28,14 @@ export default function Category({
           url={`http://localhost:3000/api/mexx/${mexxCategory!.mexx}`}
         />
       </Suspense>
-      {/* <Products
-        search={searchParams.search}
-        store="logg"
-        url={`http://localhost:3000/api/logg/${loggCategory!.logg}`}
-      /> */}
+      <Suspense fallback={<LoadingProducts store="logg" />}>
+        <Products
+          search={searchParams.search}
+          store="logg"
+          url={`http://localhost:3000/api/logg/${loggCategory!.logg}`}
+        />
+      </Suspense>
+      <ScrollButtons />
     </Layout>
   )
 }
