@@ -3,11 +3,12 @@ import ProductChart from "./ProductChart"
 
 type Props = {
   id?: string
+  store: string
 }
 
 export default async function ProductInfo(props: Props) {
   const id = props.id ?? ""
-  const product = await getProduct(`http://localhost:3000/api/mexx/id/${id}`)
+  const product = await getProduct(`${process.env.API}/${props.store}/id/${id}`)
 
   const uniqueDatesMap: { [name: string]: boolean } = {}
 

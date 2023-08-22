@@ -15,7 +15,7 @@ export default async function Home({
         <Products
           search={searchParams.search}
           store="mexx"
-          url="http://localhost:3000/api/mexx"
+          url={`${process.env.API_MEXX}`}
           reduced
         />
       </Suspense>
@@ -23,7 +23,7 @@ export default async function Home({
         <Products
           search={searchParams.search}
           store="logg"
-          url="http://localhost:3000/api/logg"
+          url={`${process.env.API_LOGG}`}
           reduced
         />
       </Suspense>

@@ -25,14 +25,14 @@ export default function Category({
         <Products
           search={searchParams.search}
           store="mexx"
-          url={`http://localhost:3000/api/mexx/${mexxCategory!.mexx}`}
+          url={`${process.env.API_MEXX}/${mexxCategory!.mexx}`}
         />
       </Suspense>
       <Suspense fallback={<LoadingProducts store="logg" />}>
         <Products
           search={searchParams.search}
           store="logg"
-          url={`http://localhost:3000/api/logg/${loggCategory!.logg}`}
+          url={`${process.env.API_LOGG}/${loggCategory!.logg}`}
         />
       </Suspense>
       <ScrollButtons />

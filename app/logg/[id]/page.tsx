@@ -13,7 +13,7 @@ export default async function ProductPage({
       <div className="mx-auto max-w-4xl">
         <GoBackButton />
         <Suspense fallback={<LoadingProduct />}>
-          <ProductInfo id={params.id} />
+          <ProductInfo id={params.id} store="logg" />
         </Suspense>
       </div>
     </main>
