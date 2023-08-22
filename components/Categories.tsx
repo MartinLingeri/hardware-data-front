@@ -39,6 +39,12 @@ export default function Categories() {
           </option>
         ))}
       </select>
+      {category == categories[0].value ? (
+        <div className="text-black italic">
+          {`La vista "${category.replace(/\-/g, " ")}" solo muestra 10 productos por
+          categoria, seleccione la categoria que desee para ver más`}
+        </div>
+      ) : null}
     </div>
   )
 }
