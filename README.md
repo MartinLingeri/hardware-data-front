@@ -15,4 +15,9 @@ Esta pagina esta hecha con [NextJS](https://nextjs.org/), [TypeScript](https://w
 
 ## 👁 Imagenes de ejemplo
 ### 💻 Desktop
+![imagen de ejemplo desktop 1](https://github.com/MartinLingeri/hardware-data-front/example_images/desktop-example-1.png)
+![imagen de ejemplo desktop 2](https://github.com/MartinLingeri/hardware-data-front/example_images/desktop-example-2.png)
+
 ### 📱 Mobile
+![imagen de ejemplo mobile 1](https://github.com/MartinLingeri/hardware-data-front/example_images/mobile-example-1.png)
+![imagen de ejemplo mobile 2](https://github.com/MartinLingeri/hardware-data-front/example_images/mobile-example-2.png)
